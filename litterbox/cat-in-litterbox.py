@@ -50,7 +50,7 @@ cap.release()
 cv2.destroyAllWindows()
 
 MY_EMAIL = "maritatrammell@gmail.com"
-MY_PASSWORD = "Snickerscat"
+MY_PASSWORD = ""
 
 
 # Email Notifications
