@@ -1,4 +1,6 @@
 import os
+import smtplib
+
 from dotenv import load_dotenv
 
 # This looks for the .env file in the same directory
