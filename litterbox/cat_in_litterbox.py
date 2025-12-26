@@ -29,7 +29,7 @@ while True:
     
     if bgr_color[0] < 100 and bgr_color[1] < 100 and bgr_color[2] < 100:
         # TODO: Send notification if cat is in litter box
-        sendEmail()
+        # sendEmail()
         print("CAT")
     else:
         print("NO CAT")

@@ -1,13 +1,7 @@
-import os
+from environment import EMAIL_USERNAME as EMAIL
+from environment import EMAIL_PASSWORD as EMAIL_PASSWORD
+
 import smtplib
-
-from dotenv import load_dotenv
-
-# This looks for the .env file in the same directory
-load_dotenv()
-
-EMAIL = os.getenv('EMAIL')
-EMAIL_PASSWORD = os.getenv('EMAIL_PASSWORD')
 
 def sendEmail():
     # Email Notifications
