@@ -7,28 +7,25 @@ from dotenv import load_dotenv
 # This looks for the .env file in the same directory
 load_dotenv()
 
-username = os.getenv('DB_USERNAME')
-password = os.getenv('DB_PASSWORD')
+EMAIL = os.getenv('EMAIL')
+EMAIL_PASSWORD = os.getenv('EMAIL_PASSWORD')
 
 def sendEmail():
-    # TODO: Write send email function
-    MY_EMAIL = ""
-    MY_PASSWORD = ""
     # Email Notifications
     # Establish connection to the Gmail SMTP server
     with smtplib.SMTP("smtp.gmail.com", port=587) as connection:
         # Secure the connection
         connection.starttls()
         # Login to the email account
-        connection.login(user=MY_EMAIL, password=MY_PASSWORD)
+        connection.login(user=EMAIL, password=EMAIL_PASSWORD)
         # Send the email
         connection.sendmail(
-            from_addr=MY_EMAIL,
-            to_addrs=MY_EMAIL,  # Use the email from the CSV file
+            from_addr=EMAIL,
+            to_addrs=EMAIL,  # Use the email from the CSV file
             msg=f"Subject:Cat Tracker Notification\n\nCat Counter"
         )
 
-    print("Email sent successfully to:", MY_EMAIL)
+    print("Email sent successfully to:", EMAIL)
     
 cap = cv2.VideoCapture(0)
 
@@ -73,24 +70,3 @@ while True:
 # Release the video source and close all OpenCV Windows
 cap.release()
 cv2.destroyAllWindows()
-
-
-<<<<<<< HEAD
-
-# Email Notifications
-# Establish connection to the Gmail SMTP server
-with smtplib.SMTP("smtp.gmail.com", port=587) as connection:
-    # Secure the connection
-    connection.starttls()
-    # Login to the email account
-    connection.login(user=username, password=password)
-    # Send the email
-    connection.sendmail(
-        from_addr=username,
-        to_addrs=username,
-        msg=f"Subject:Cat Tracker Notification\n\nCat Counter"
-    )
-
-print("Email sent successfully to:", username)
-=======
->>>>>>> b4bf75886d4720f006da2320e15d3ff046d089ee
