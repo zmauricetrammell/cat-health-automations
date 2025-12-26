@@ -21,5 +21,3 @@ def sendEmail():
 
     print("Email sent successfully to:", EMAIL)
 
-
-sendEmail()
