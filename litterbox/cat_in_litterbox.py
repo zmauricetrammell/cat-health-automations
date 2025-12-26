@@ -1,9 +1,14 @@
 import cv2
+from email_sender.send_email import sendEmail
 
 cap = cv2.VideoCapture(0)
 
+CAT_THRESHOLD = 300
+
 HEIGHT = 480
 WIDTH = 640
+
+cat_instance = 0
 
 if not cap.isOpened():
     print("Error: Could not open video device or file")
@@ -27,11 +32,15 @@ while True:
     # Check center pixels for color
     bgr_color = frame[240, 320]
     
-    if bgr_color[0] < 100 and bgr_color[1] < 100 and bgr_color[2] < 100:
-        # TODO: Send notification if cat is in litter box
-        # sendEmail()
+    if bgr_color[0] < 75 and bgr_color[1] < 75 and bgr_color[2] < 75:
+        cat_instance += 1    
         print("CAT")
+        if cat_instance >= CAT_THRESHOLD:
+            print("CAT IN LITTERBOX")
+            sendEmail()
+            cat_instance = 0
     else:
+        cat_instance = 0
         print("NO CAT")
 
     # Display the frame in a window named USB Camera
