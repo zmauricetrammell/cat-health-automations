@@ -1,7 +1,6 @@
 import cv2
 import smtplib
 
-    
 cap = cv2.VideoCapture(0)
 
 HEIGHT = 480
