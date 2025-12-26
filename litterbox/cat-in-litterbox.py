@@ -3,9 +3,25 @@ import smtplib
 
 def sendEmail():
     # TODO: Write send email function
-    print('send email')
+    MY_EMAIL = ""
+    MY_PASSWORD = ""
+    # Email Notifications
+    # Establish connection to the Gmail SMTP server
+    with smtplib.SMTP("smtp.gmail.com", port=587) as connection:
+        # Secure the connection
+        connection.starttls()
+        # Login to the email account
+        connection.login(user=MY_EMAIL, password=MY_PASSWORD)
+        # Send the email
+        connection.sendmail(
+            from_addr=MY_EMAIL,
+            to_addrs=MY_EMAIL,  # Use the email from the CSV file
+            msg=f"Subject:Cat Tracker Notification\n\nCat Counter"
+        )
+
+    print("Email sent successfully to:", MY_EMAIL)
     
-cap = cv2.VideoCapture(1)
+cap = cv2.VideoCapture(0)
 
 HEIGHT = 480
 WIDTH = 640
@@ -49,22 +65,4 @@ while True:
 cap.release()
 cv2.destroyAllWindows()
 
-MY_EMAIL = "maritatrammell@gmail.com"
-MY_PASSWORD = ""
 
-
-# Email Notifications
-# Establish connection to the Gmail SMTP server
-with smtplib.SMTP("smtp.gmail.com", port=587) as connection:
-    # Secure the connection
-    connection.starttls()
-    # Login to the email account
-    connection.login(user=MY_EMAIL, password=MY_PASSWORD)
-    # Send the email
-    connection.sendmail(
-        from_addr=MY_EMAIL,
-        to_addrs=MY_EMAIL,  # Use the email from the CSV file
-        msg=f"Subject:Cat Tracker Notification\n\nCat Counter"
-    )
-
-print("Email sent successfully to:", MY_EMAIL)
