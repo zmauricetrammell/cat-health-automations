@@ -3,6 +3,7 @@ from environment import EMAIL_PASSWORD as EMAIL_PASSWORD
 
 import smtplib
 
+
 def sendEmail():
     # Email Notifications
     # Establish connection to the Gmail SMTP server
@@ -19,3 +20,6 @@ def sendEmail():
         )
 
     print("Email sent successfully to:", EMAIL)
+
+
+sendEmail()
